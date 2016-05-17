@@ -1,0 +1,11 @@
+CACHE MANIFEST
+./styles.css
+./indexeddb.shim.min.js
+./promise.js
+./application.js
+./css/
+./fonts/
+./js/
+
+NETWORK:
+*

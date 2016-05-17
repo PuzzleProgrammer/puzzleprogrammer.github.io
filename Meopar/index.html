@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html manifest="./offline.appcache">
+<head>
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	
+	<title> Color App </title>
+
+	<!--Stylesheets and bootstrap-->
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/custom.css">
+	
+	<!--fonts-->
+	<link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+	
+	<!--js launcher-->
+	
+    <script src="./indexeddb.shim.min.js"></script>
+    <script src="./promise.js"></script>
+    <script src="./application.js"></script>
+    <script>databaseOpen();</script>
+</head>
+<body>
+	<div class = "container">
+		<h2 class= "text-center">What is your age range?</h1>
+		
+		<div class="stretch btn btn-info" id="Age range 1" role="button" onclick="onClick(this.id)" role="button">Age range 1</div>
+		
+		<div class="stretch btn btn-info" id="Age range 2" role="button" onclick="onClick(this.id)" role="button">Age range 2</div>
+		
+		<div class="stretch btn btn-info" id="Age range 3" role="button" onclick="onClick(this.id)" role="button">Age range 3</div>
+		
+		<div class="stretch btn btn-info" id="Age range 4" role="button" onclick="onClick(this.id)" role="button">Age range 4</div>
+		
+		<div class="stretch btn btn-info" id="Age range 5" role="button" onclick="onClick(this.id)" role="button">Age range 5</div>
+		
+		<div class="stretch btn btn-info" id="Preferred not to say" role="button" onclick="onClick(this.id)" role="button">Preferred not to say</div>
+		
+<!--		<a href="./data.html" class="stretch btn btn-info" id="other" role="button" role="button">View Data</a>
+-->
+	</div>
+</body>
+</html>
