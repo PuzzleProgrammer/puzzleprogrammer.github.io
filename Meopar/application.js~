@@ -103,7 +103,7 @@
   }
   
   function dlete(){
-  if(confirm("Warning: This will permanently delete all entries on this page.\nOnly confirm if you have copied the values elsewhere already.")){
+  if(confirm("Warning: This will permanently delete all entries on this page? Only confirm if you have copied the values elsewhere already.")){
   	databaseTodosDelete();
     refreshView();
   }}
