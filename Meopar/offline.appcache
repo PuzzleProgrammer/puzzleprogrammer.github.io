@@ -1,11 +1,13 @@
 CACHE MANIFEST
-./styles.css
 ./indexeddb.shim.min.js
 ./promise.js
 ./application.js
-./css/
-./fonts/
-./js/
+./css/bootstrap.min.css
+./index.html
+./data.html
+./custom.css
+./customdata.css
+./
 
 NETWORK:
 *

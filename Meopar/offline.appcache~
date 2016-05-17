@@ -1,5 +1,4 @@
 CACHE MANIFEST
-NETWORK:
 ./styles.css
 ./indexeddb.shim.min.js
 ./promise.js
@@ -8,5 +7,5 @@ NETWORK:
 ./fonts/
 ./js/
 
-
+NETWORK:
 *
