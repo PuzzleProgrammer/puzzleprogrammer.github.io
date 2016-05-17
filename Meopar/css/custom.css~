@@ -1,18 +1,20 @@
 body {
-/*	background-image: url("https://images.unsplash.com/photo-1457203112846-f9f76625f7c4?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&w=1080&fit=max&s=49b14c281d9e3c799c16ce2e9eb561d1");
+/**	background-image: url("https://images.unsplash.com/photo-1457203112846-f9f76625f7c4?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&w=1080&fit=max&s=49b14c281d9e3c799c16ce2e9eb561d1");
 	background-repeat: no-repeat;
-	background-size:cover;*/
+	background-size:cover;/**/
 	background-color:black;
 	font-family: 'Raleway', sans-serif;
+	color:white;
+	text-align:center;
 }
 
 .btn {
 
 	background-color: white;
 	color: black;
-	margin:10px;
+/**/margin:10px;/**/
 	border-radius:20px;
-/*	border-width:5px;*/
+/**	border-width:5px;/**/
 	height:50px;
 	padding-top:10px;
 	font-size:20px;
@@ -30,7 +32,11 @@ body {
 }
 
 .btn:hover{
+	/**
 	background-color: #3385ff;
+	/**/
+	background-color:#dddddd;
+	color:black;
 }
 
 .container {
