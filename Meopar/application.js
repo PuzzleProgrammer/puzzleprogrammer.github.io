@@ -37,7 +37,7 @@
     });
   }
 
-  function databaseTodosGet() {
+  function databaseTodosGet(query) {
     return new Promise(function(resolve, reject) {
       var transaction = db.transaction(['todo'], 'readonly');
       var store = transaction.objectStore('todo');
@@ -54,8 +54,38 @@
 
         // If there's data, add it to array
         if (result) {
-        console.log(result.value._id);
-          data.push(result.value);
+//        console.log(result.value._id);
+		  if (!query || (query.deleted === true && result.value.deleted) || (query.deleted === false && !result.value.deleted)) {
+            data.push(result.value);
+          }
+          result.continue();
+
+        // Reach the end of the data
+        } else {
+          resolve(data);
+        }
+      };
+    });
+  }
+  
+  function databaseTodosSet(query) {
+    return new Promise(function(resolve, reject) {
+      var transaction = db.transaction(['todo'], 'readonly');
+      var store = transaction.objectStore('todo');
+
+      // Get everything in the store
+      var keyRange = IDBKeyRange.lowerBound(0);
+      var cursorRequest = store.openCursor(keyRange);
+
+      // This fires once per row in the store, so for simplicity collect the data
+      // in an array (data) and send it pass it in the resolve call in one go
+      var data = [];
+      cursorRequest.onsuccess = function(e) {
+        var result = e.target.result;
+
+        // If there's data, add it to array
+        if (result) {
+          e.target.delete=true;
           result.continue();
 
         // Reach the end of the data
@@ -87,7 +117,7 @@
   }
   
   function refreshView() {
-    return databaseTodosGet().then(renderAllTodos);
+    return databaseTodosGet({deleted:false}).then(renderAllTodos);
   }
   
   function renderAllTodos(todos) {
@@ -98,21 +128,28 @@
     ul.innerHTML = html;
   }
 
+  function flagAllTodos(todos) {
+    todos.forEach(function(todo) {
+      todo.deleted=true;
+      return databaseTodosPut(todo);
+    });
+  }
+
   function todoToHtml(todo) {
     return '<li>'+todo._id+';'+todo.text+'</li>';
   }
   
   function dlete(){
   if(confirm("Warning: This will permanently delete all entries on this page.\nOnly confirm if you have copied the values elsewhere already.")){
-  	databaseTodosDelete();
-    refreshView();
+    databaseTodosGet({deleted:false}).then(flagAllTodos).then(refreshView);
+//  	databaseTodosDelete();
   }}
   
-  function databaseTodosDelete() {
+  function databaseTodosDelete(todo) {
     return new Promise(function(resolve, reject) {
       var transaction = db.transaction(['todo'], 'readwrite');
       var store = transaction.objectStore('todo');
-      var request = store.clear();
+      var request = store.delete(todo._id);
       transaction.oncomplete = resolve;
       request.onerror = reject;
     });
