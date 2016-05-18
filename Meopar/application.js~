@@ -1,5 +1,6 @@
 //(function() {
 	var ul;
+	var api = 'https://offline-todo-api.herokuapp.com/todos';
 	databaseOpen().then(function() {
       ul = document.querySelector('ul');
     });
@@ -67,34 +68,6 @@
       };
     });
   }
-  
-  function databaseTodosSet(query) {
-    return new Promise(function(resolve, reject) {
-      var transaction = db.transaction(['todo'], 'readonly');
-      var store = transaction.objectStore('todo');
-
-      // Get everything in the store
-      var keyRange = IDBKeyRange.lowerBound(0);
-      var cursorRequest = store.openCursor(keyRange);
-
-      // This fires once per row in the store, so for simplicity collect the data
-      // in an array (data) and send it pass it in the resolve call in one go
-      var data = [];
-      cursorRequest.onsuccess = function(e) {
-        var result = e.target.result;
-
-        // If there's data, add it to array
-        if (result) {
-          e.target.delete=true;
-          result.continue();
-
-        // Reach the end of the data
-        } else {
-          resolve(data);
-        }
-      };
-    });
-  }
 
   function databaseOpen() {
     return new Promise(function(resolve, reject) {
@@ -140,11 +113,10 @@
   }
   
   function dlete(){
-  if(confirm("Warning: This will permanently delete all entries on this page.\nOnly confirm if you have copied the values elsewhere already.")){
-    databaseTodosGet({deleted:false}).then(flagAllTodos);
-//  	databaseTodosDelete();
-    refreshView();
-  }}
+    if(confirm("Warning: This will permanently delete all entries on this page.\nOnly confirm if you have copied the values elsewhere already.")){
+      databaseTodosGet({deleted:false}).then(flagAllTodos).then(refreshView);
+    }
+  }
   
   function databaseTodosDelete(todo) {
     return new Promise(function(resolve, reject) {
@@ -154,6 +126,32 @@
       transaction.oncomplete = resolve;
       request.onerror = reject;
     });
+  }
+
+  function serverTodosGet(_id) {
+    return fetch(api + '/' + (_id ? _id : ''))
+      .then(function(response) {
+        return response.json();
+      });
+  }
+
+  function serverTodosPost(todo) {
+    return fetch(api, {
+        method: 'post',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(todo)
+      })
+        .then(function(response) {
+          if (response.status === 410) throw new Error(response.statusText);
+      return response;
+    });
+  }
+
+  function serverTodosDelete(todo) {
+    return fetch(api + '/' + todo._id, { method: 'delete' })
   }
 
 //}());

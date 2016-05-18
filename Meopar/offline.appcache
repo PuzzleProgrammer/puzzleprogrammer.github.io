@@ -7,7 +7,7 @@ CACHE MANIFEST
 ./data.html
 ./custom.css
 ./customdata.css
-./
+./fetch.js
 
 NETWORK:
 *
