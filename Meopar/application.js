@@ -24,7 +24,7 @@
 			+("00"+d.getSeconds()).slice(-2));
 //		console.log(x);
 		var todo = { text: String(label), _id: String(x) };
-        databaseTodosPut(todo).then(synchronize())
+        databaseTodosPut(todo)
           .then(window.open('','_self').close());
 	}
 	
@@ -114,7 +114,7 @@
   
   function dlete(){
     if(confirm("Warning: This will permanently delete all entries on this page.\nOnly confirm if you have copied the values elsewhere already.")){
-databaseTodosGet({deleted:false}).then(flagAllTodos).then(synchronize()).then(refreshView);
+databaseTodosGet({deleted:false}).then(flagAllTodos).then(refreshView);
     }
   }
   
@@ -155,6 +155,7 @@ databaseTodosGet({deleted:false}).then(flagAllTodos).then(synchronize()).then(re
   }
 
   function synchronize() {
+  console.log("test");
     return Promise.all([serverTodosGet(), databaseTodosGet()])
       .then(function(results) {
         var promises = [];
