@@ -155,6 +155,7 @@ databaseTodosGet({deleted:false}).then(flagAllTodos).then(refreshView);
   }
 
   function synchronize() {
+  console.log("test");
     return Promise.all([serverTodosGet(), databaseTodosGet()])
       .then(function(results) {
         var promises = [];
