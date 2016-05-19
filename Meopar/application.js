@@ -76,7 +76,7 @@
   function databaseOpen() {
     return new Promise(function(resolve, reject) {
       var version = 1;
-      var indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB || window.shimIndexedDB;
+      var indexedDB = window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB || window.shimIndexedDB;
       var request = indexedDB.open('todos', version);
 
       // Run migrations if necessary
