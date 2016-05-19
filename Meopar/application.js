@@ -7,7 +7,6 @@
 	document.ontouchmove = function(event){
     	event.preventDefault();
 	}
-}, false);
 	function onClick(label){
 		var timestamp=Date();
 //		alert("Age range: \t"+label+"\nTime:        \t"+timestamp);
