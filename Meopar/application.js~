@@ -1,13 +1,14 @@
 //(function() {
 	var ul;
+	var indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB || window.shimIndexedDB;
+
 	var api = 'https://offline-todo-api.herokuapp.com/todos';
 	databaseOpen().then(function() {
       ul = document.querySelector('ul');
-    });
+    }).then(synchronize);
 	document.ontouchmove = function(event){
     	event.preventDefault();
 	}
-}, false);
 	function onClick(label){
 		var timestamp=Date();
 //		alert("Age range: \t"+label+"\nTime:        \t"+timestamp);

@@ -1,9 +1,11 @@
 //(function() {
 	var ul;
+	
+
 	var api = 'https://offline-todo-api.herokuapp.com/todos';
 	databaseOpen().then(function() {
       ul = document.querySelector('ul');
-    });
+    }).then(synchronize);
 	document.ontouchmove = function(event){
     	event.preventDefault();
 	}
@@ -74,6 +76,7 @@
   function databaseOpen() {
     return new Promise(function(resolve, reject) {
       var version = 1;
+      var indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB || window.shimIndexedDB;
       var request = indexedDB.open('todos', version);
 
       // Run migrations if necessary
