@@ -3,8 +3,8 @@ CACHE MANIFEST
 ./promise.js
 ./application.js
 ./css/bootstrap.min.css
-./index.html
-./data.html
+#	./index.html
+#	./data.html
 ./custom.css
 ./customdata.css
 ./fetch.js
