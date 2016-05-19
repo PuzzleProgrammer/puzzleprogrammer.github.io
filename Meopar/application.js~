@@ -129,6 +129,8 @@
   }
 
   function serverTodosGet(_id) {
+  
+  console.log("FSDFS");
     return fetch(api + '/' + (_id ? _id : ''))
       .then(function(response) {
         return response.json();
@@ -136,6 +138,9 @@
   }
 
   function serverTodosPost(todo) {
+  
+  
+  console.log("FSDFS");
     return fetch(api, {
         method: 'post',
         headers: {
@@ -151,6 +156,8 @@
   }
 
   function serverTodosDelete(todo) {
+  
+  console.log("FSDFS");
     return fetch(api + '/' + todo._id, { method: 'delete' })
   }
 
