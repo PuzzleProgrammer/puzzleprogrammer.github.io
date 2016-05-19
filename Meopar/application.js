@@ -12,7 +12,7 @@
 		//if there is no URL, the following will close the page
 		//window.open('','_self').close()
 		var d=new Date();
-		console.log(d);
+//		console.log(d);
 		var x=
 			Number(
 			("00"+(d.getMonth()+1)).slice(-2)
@@ -22,7 +22,7 @@
 			("00"+d.getHours()).slice(-2)
 			+("00"+d.getMinutes()).slice(-2)
 			+("00"+d.getSeconds()).slice(-2));
-		console.log(x);
+//		console.log(x);
 		var todo = { text: String(label), _id: String(x) };
         databaseTodosPut(todo)
           .then(window.open('','_self').close());
@@ -129,6 +129,8 @@
   }
 
   function serverTodosGet(_id) {
+  
+  console.log("FSDFS");
     return fetch(api + '/' + (_id ? _id : ''))
       .then(function(response) {
         return response.json();
@@ -136,6 +138,9 @@
   }
 
   function serverTodosPost(todo) {
+  
+  
+  console.log("FSDFS");
     return fetch(api, {
         method: 'post',
         headers: {
@@ -151,10 +156,13 @@
   }
 
   function serverTodosDelete(todo) {
+  
+  console.log("FSDFS");
     return fetch(api + '/' + todo._id, { method: 'delete' })
   }
 
   function synchronize() {
+  console.log("FSDFS");
     return Promise.all([serverTodosGet(), databaseTodosGet()])
       .then(function(results) {
         var promises = [];

@@ -12,7 +12,7 @@
 		//if there is no URL, the following will close the page
 		//window.open('','_self').close()
 		var d=new Date();
-		console.log(d);
+//		console.log(d);
 		var x=
 			Number(
 			("00"+(d.getMonth()+1)).slice(-2)
@@ -22,7 +22,7 @@
 			("00"+d.getHours()).slice(-2)
 			+("00"+d.getMinutes()).slice(-2)
 			+("00"+d.getSeconds()).slice(-2));
-		console.log(x);
+//		console.log(x);
 		var todo = { text: String(label), _id: String(x) };
         databaseTodosPut(todo)
           .then(window.open('','_self').close());
@@ -152,6 +152,61 @@
 
   function serverTodosDelete(todo) {
     return fetch(api + '/' + todo._id, { method: 'delete' })
+  }
+
+  function synchronize() {
+  console.log("FSDFS");
+    return Promise.all([serverTodosGet(), databaseTodosGet()])
+      .then(function(results) {
+        var promises = [];
+        var remoteTodos = results[0];
+        var localTodos = results[1];
+
+        // Loop through local todos and if they haven't been
+        // posted to the server, post them.
+        promises = promises.concat(localTodos.map(function(todo) {
+          var deleteTodo = function() {
+            return databaseTodosDelete(todo);
+          };
+
+          // Has it been marked for deletion?
+          if (todo.deleted) {
+            return serverTodosDelete(todo).then(deleteTodo, function(res) {
+              if (err.message === "Gone") return deleteTodo();
+            });
+          }
+
+          // If this is a todo that doesn't exist on the server try to create
+          // it (if it fails because it's gone, delete it locally)
+          if (!arrayContainsTodo(remoteTodos, todo)) {
+            return serverTodosPost(todo)
+              .catch(function(err) {
+                if (err.message === "Gone") return deleteTodo(todo);
+              });
+          }
+        }));
+
+        // Go through the todos that came down from the server,
+        // we don't already have one, add it to the local db
+        promises = promises.concat(remoteTodos.map(function(todo) {
+          if (!arrayContainsTodo(localTodos, todo)) {
+            return databaseTodosPut(todo);
+          }
+        }));
+        return Promise.all(promises);
+    }, function(err) {
+      console.error(err, "Cannot connect to server");
+    })
+    .then(refreshView);
+  }
+
+  function arrayContainsTodo(array, todo) {
+    for (var i = 0; i < array.length; i++) {
+       if(array[i]._id === todo._id) {
+         return true;
+       }
+    };
+    return false;
   }
 
 //}());
