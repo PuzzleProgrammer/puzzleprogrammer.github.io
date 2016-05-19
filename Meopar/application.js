@@ -7,6 +7,14 @@
 	document.ontouchmove = function(event){
     	event.preventDefault();
 	}
+	window.addEventListener('orientationchange', function (evt) {
+    switch(window.orientation) {
+        case 0: // portrait
+        case 180: // portrait
+        case 90: // landscape
+        case -90: // landscape
+    }
+}, false);
 	function onClick(label){
 		var timestamp=Date();
 //		alert("Age range: \t"+label+"\nTime:        \t"+timestamp);

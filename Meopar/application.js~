@@ -4,7 +4,9 @@
 	databaseOpen().then(function() {
       ul = document.querySelector('ul');
     });
-
+	document.ontouchmove = function(event){
+    	event.preventDefault();
+	}
 	function onClick(label){
 		var timestamp=Date();
 //		alert("Age range: \t"+label+"\nTime:        \t"+timestamp);
