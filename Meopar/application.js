@@ -24,7 +24,7 @@
 			+("00"+d.getSeconds()).slice(-2));
 //		console.log(x);
 		var todo = { text: String(label), _id: String(x) };
-        databaseTodosPut(todo).then(synchronize())
+        databaseTodosPut(todo)
           .then(window.open('','_self').close());
 	}
 	
@@ -114,7 +114,7 @@
   
   function dlete(){
     if(confirm("Warning: This will permanently delete all entries on this page.\nOnly confirm if you have copied the values elsewhere already.")){
-      databaseTodosGet({deleted:false}).then(flagAllTodos).then(refreshView);
+      databaseTodosGet({deleted:false}).then(flagAllTodos).then(synchronize()).then(refreshView);
     }
   }
   
@@ -129,8 +129,6 @@
   }
 
   function serverTodosGet(_id) {
-  
-  console.log("FSDFS");
     return fetch(api + '/' + (_id ? _id : ''))
       .then(function(response) {
         return response.json();
@@ -138,9 +136,6 @@
   }
 
   function serverTodosPost(todo) {
-  
-  
-  console.log("FSDFS");
     return fetch(api, {
         method: 'post',
         headers: {
@@ -156,13 +151,10 @@
   }
 
   function serverTodosDelete(todo) {
-  
-  console.log("FSDFS");
     return fetch(api + '/' + todo._id, { method: 'delete' })
   }
 
   function synchronize() {
-  console.log("FSDFS");
     return Promise.all([serverTodosGet(), databaseTodosGet()])
       .then(function(results) {
         var promises = [];

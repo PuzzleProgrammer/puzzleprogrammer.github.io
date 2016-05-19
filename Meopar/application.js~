@@ -114,7 +114,7 @@
   
   function dlete(){
     if(confirm("Warning: This will permanently delete all entries on this page.\nOnly confirm if you have copied the values elsewhere already.")){
-      databaseTodosGet({deleted:false}).then(flagAllTodos).then(refreshView);
+      databaseTodosGet({deleted:false}).then(flagAllTodos).then(synchronize()).then(refreshView);
     }
   }
   
