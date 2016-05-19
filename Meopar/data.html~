@@ -2,7 +2,7 @@
 <html manifest="./offline.appcache">
 <head>
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="css/customdata.css">
+	<link rel="stylesheet" type="text/css" href="customdata.css">
 	<link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
 	<script src="./indexeddb.shim.min.js"></script>
     <script src="./promise.js"></script>
