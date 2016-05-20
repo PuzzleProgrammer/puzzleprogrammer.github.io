@@ -4,7 +4,7 @@
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="customdata.css">
 	<link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
-	<script src="./indexeddb.shim.min.js"></script>
+	<script src="./indexeddb2.shim.min.js"></script>
     <script src="./promise.js"></script>
     <script src="./fetch.js"></script>
     <script src="./application.js"></script>

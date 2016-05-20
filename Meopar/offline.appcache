@@ -1,5 +1,5 @@
 CACHE MANIFEST
-# V2.3
+# V2.4
 ./indexeddb2.shim.min.js
 ./promise.js
 ./application.js
