@@ -77,7 +77,7 @@
     return new Promise(function(resolve, reject) {
       var version = 1;
       var indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB || window.shimIndexedDB;
-      var request = shimindexedDB.open('todos', version);
+      var request = indexedDB.open('todos', version);
 
       // Run migrations if necessary
       request.onupgradeneeded = function(e) {
