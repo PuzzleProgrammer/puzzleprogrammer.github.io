@@ -29,7 +29,7 @@
 		
 //		console.log(x);
 		var todo = { text: String(label), _id: String(x) };
-        databaseOpen().then(databaseTodosPut(todo),alert("it's not working")).then(synchronize(),alert("it's not working2"))
+        databaseTodosPut(todo).then(synchronize(),alert("it's not working4"))
         	.then(window.open("./thankyou.html"),alert("it's not working3"));
    //       .then(window.open('','_self').close());
 	}
