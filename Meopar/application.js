@@ -9,7 +9,6 @@
 	document.ontouchmove = function(event){
     	event.preventDefault();
 	}
-	alert("hi");
 	function onClick(label,test){
 	if(typeof(test)==='undefined') test=false;
 		var timestamp=Date();
