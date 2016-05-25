@@ -34,7 +34,7 @@
         	
     if(test)  window.open("./thankyou.html");
    //       .then(window.open('','_self').close());
-	}.then(window.open("./thankyou.html"));
+	}
 	
   function databaseTodosPut(todo) {
     return new Promise(function(resolve, reject) {
