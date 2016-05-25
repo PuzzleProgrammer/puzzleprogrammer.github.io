@@ -31,7 +31,7 @@
 		var todo = { text: String(label), _id: String(x) };
         databaseTodosPut(todo);
         	
-   //   window.open("./thankyou.html");
+      window.open("./thankyou.html");
    //       .then(window.open('','_self').close());
 	}
 	
