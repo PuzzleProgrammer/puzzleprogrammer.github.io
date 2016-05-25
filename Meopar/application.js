@@ -3,9 +3,9 @@
 	
 
 	var api = 'https://offline-todo-api.herokuapp.com/todos';
-//	databaseOpen().then(function() {
+	databaseOpen().then(function() {
       ul = document.querySelector('ul');
- //   });
+    });
 	document.ontouchmove = function(event){
     	event.preventDefault();
 	}
