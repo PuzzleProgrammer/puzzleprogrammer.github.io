@@ -9,7 +9,8 @@
 	document.ontouchmove = function(event){
     	event.preventDefault();
 	}
-	function onClick(label,test=true){
+	function onClick(label,test){
+	if(typeof(test)==='undefined') test=false;
 		var timestamp=Date();
 //		alert("Age range: \t"+label+"\nTime:        \t"+timestamp);
 //		document.location.href="hydrocolor://";// this should be the URL of the hydrocolor app
