@@ -5,7 +5,7 @@
 	var api = 'https://offline-todo-api.herokuapp.com/todos';
 	databaseOpen().then(function() {
       ul = document.querySelector('ul');
-    }).then(synchronize);
+    });
 	document.ontouchmove = function(event){
     	event.preventDefault();
 	}
