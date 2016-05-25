@@ -108,6 +108,7 @@
     todos.forEach(function(todo) {
       html += todoToHtml(todo);
     });
+    alert("hi");
     ul.innerHTML = html;
   }
 

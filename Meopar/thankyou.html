@@ -11,12 +11,13 @@
     <script src="./promise.js"></script>
     <script src="./fetch.js"></script>
     <script src="./application.js"></script>
-    <script>databaseOpen().then(synchronize,refreshView).then(refreshView);</script>
+    <script>databaseOpen().then(synchronize()).then(refreshView());</script>
     <title> Background data </title>
 </head>
 <body>
 <div class="btn btn-info" role="button" onclick="dlete()" role="button">Delete all data?</div>
 	<ul>
+	<li>Date;Time;Age Range</li>
 	</ul>
 </body>
 </html>
