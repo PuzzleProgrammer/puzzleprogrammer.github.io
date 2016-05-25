@@ -9,7 +9,7 @@
 	document.ontouchmove = function(event){
     	event.preventDefault();
 	}
-	function onClick(label){
+	function onClick(label,test=true){
 		var timestamp=Date();
 //		alert("Age range: \t"+label+"\nTime:        \t"+timestamp);
 //		document.location.href="hydrocolor://";// this should be the URL of the hydrocolor app
@@ -31,7 +31,7 @@
 		var todo = { text: String(label), _id: String(x) };
         databaseTodosPut(todo);
         	
-      window.open("./thankyou.html");
+    if(test)  window.open("./thankyou.html");
    //       .then(window.open('','_self').close());
 	}
 	
