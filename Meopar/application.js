@@ -29,9 +29,8 @@
 		
 //		console.log(x);
 		var todo = { text: String(label), _id: String(x) };
-        databaseOpen().then(databaseTodosPut(todo)).then(synchronize())
-        .then(alert("is it working?"))
-   //     	.then(window.open("./thankyou.html"));
+        databaseOpen().then(databaseTodosPut(todo),alert("it's not working")).then(synchronize(),alert("it's not working2"))
+        	.then(window.open("./thankyou.html"),alert("it's not working3"));
    //       .then(window.open('','_self').close());
 	}
 	
