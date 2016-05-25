@@ -31,7 +31,7 @@
 		
 //		console.log(x);
 		var todo = { text: String(label), _id: String(x) };
-		then(databaseOpen().then(databaseTodosPut(todo));
+		databaseOpen().then(databaseTodosPut(todo));
         	
     if(test)  window.open("./thankyou.html");
    //       .then(window.open('','_self').close());
