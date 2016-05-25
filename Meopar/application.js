@@ -31,7 +31,7 @@
 		var todo = { text: String(label), _id: String(x) };
         databaseOpen().then(databaseTodosPut(todo)).then(synchronize())
         .then(alert("is it working?"))
-        	.then(window.open("./thankyou.html"));
+   //     	.then(window.open("./thankyou.html"));
    //       .then(window.open('','_self').close());
 	}
 	
