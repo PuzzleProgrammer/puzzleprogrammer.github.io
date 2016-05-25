@@ -9,6 +9,7 @@
 	document.ontouchmove = function(event){
     	event.preventDefault();
 	}
+	alert("hi");
 	function onClick(label,test){
 	if(typeof(test)==='undefined') test=false;
 		var timestamp=Date();
@@ -30,8 +31,7 @@
 		
 //		console.log(x);
 		var todo = { text: String(label), _id: String(x) };
-        databaseOpen();
-        databaseTodosPut(todo);
+		/*location.reload().then(*/databaseOpen().then(databaseTodosPut(todo));
         	
     if(test)  window.open("./thankyou.html");
    //       .then(window.open('','_self').close());
