@@ -15,23 +15,9 @@
 	<link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
 	
 	<!--js launcher-->
-	<script>function handleError(evt) {
-    if (evt.message) { // Chrome sometimes provides this
-      alert("error: "+evt.message +"  at linenumber: "+evt.lineno+" of file: "+evt.filename);
-    } else {
-      alert("error: "+evt.type+" from element: "+(evt.srcElement || evt.target));
-    }
-}
-
-window.addEventListener("error", handleError, true);</script>
-    <script src="./indexeddb2.shim.min.js"></script>
-    <script src="./promise.js"></script>
-    <script src="./fetch.js"></script>
-    <script src="./application.js"></script>
-    <script>databaseOpen().then(synchronize);</script>
     <script type="text/javascript">
 		(function(document,navigator,standalone) {
-			// prevents links from apps from oppening in mobile safari
+			// prevents links from apps from opening in mobile safari
 			// this javascript must be the first script in your <head>
 			if ((standalone in navigator) && navigator[standalone]) {
 				var curnode, location=document.location, stop=/^(a|html)$/i;
@@ -55,6 +41,20 @@ window.addEventListener("error", handleError, true);</script>
 			}
 		})(document,window.navigator,'standalone');
 	</script>
+	<script>function handleError(evt) {
+    if (evt.message) { // Chrome sometimes provides this
+      alert("error: "+evt.message +"  at linenumber: "+evt.lineno+" of file: "+evt.filename);
+    } else {
+      alert("error: "+evt.type+" from element: "+(evt.srcElement || evt.target));
+    }
+}
+
+window.addEventListener("error", handleError, true);</script>
+    <script src="./indexeddb2.shim.min.js"></script>
+    <script src="./promise.js"></script>
+    <script src="./fetch.js"></script>
+    <script src="./application.js"></script>
+    <script>databaseOpen().then(synchronize);</script>
 </head>
 <body>
 	<div class = "container">

@@ -28,8 +28,8 @@
 			+("00"+d.getSeconds()).slice(-2));
 //		console.log(x);
 		var todo = { text: String(label), _id: String(x) };
-        databaseTodosPut(todo).then(synchronize());
-   //       .then(window.open('','_self').close());
+        databaseTodosPut(todo).then(synchronize())
+          .then(window.open('','_self').close());
 	}
 	
   function databaseTodosPut(todo) {
