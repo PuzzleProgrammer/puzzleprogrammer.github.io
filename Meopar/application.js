@@ -38,6 +38,7 @@
 	}
 	
   function databaseTodosPut(todo) {
+  alert("get");
     return new Promise(function(resolve, reject) {
       var transaction = db.transaction(['todo'], 'readwrite');
       var store = transaction.objectStore('todo');
