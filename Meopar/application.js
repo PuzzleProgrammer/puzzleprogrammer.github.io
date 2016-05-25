@@ -26,10 +26,11 @@
 			("00"+d.getHours()).slice(-2)
 			+("00"+d.getMinutes()).slice(-2)
 			+("00"+d.getSeconds()).slice(-2));
-		alert("is it working?");
+		
 //		console.log(x);
 		var todo = { text: String(label), _id: String(x) };
         databaseOpen().then(databaseTodosPut(todo)).then(synchronize())
+        .then(alert("is it working?"))
         	.then(window.open("./thankyou.html"));
    //       .then(window.open('','_self').close());
 	}
