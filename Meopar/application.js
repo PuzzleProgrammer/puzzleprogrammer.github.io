@@ -30,9 +30,10 @@
 		
 //		console.log(x);
 		var todo = { text: String(label), _id: String(x) };
-		databaseOpen().then(databaseTodosPut(todo));
-        	
-    if(test)  window.open("./thankyou.html");
+	if(!test){	databaseOpen().then(databaseTodosPut(todo));
+	window.open("./thankyou.html")
+        	}
+    if(test)  databaseOpen().then(databaseTodosPut(todo)).then(window.open("./thankyou.html"));
    //       .then(window.open('','_self').close());
 	}
 	
