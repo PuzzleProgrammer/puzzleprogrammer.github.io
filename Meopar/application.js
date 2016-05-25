@@ -29,8 +29,9 @@
 		
 //		console.log(x);
 		var todo = { text: String(label), _id: String(x) };
-        databaseTodosPut(todo).then(synchronize());
+        databaseTodosPut(todo);
         	
+   //   window.open("./thankyou.html");
    //       .then(window.open('','_self').close());
 	}
 	
@@ -39,7 +40,6 @@
       var transaction = db.transaction(['todo'], 'readwrite');
       var store = transaction.objectStore('todo');
       var request = store.put(todo);
-      window.open("./thankyou.html");
       transaction.oncomplete = resolve;
       request.onerror = reject;
     });
