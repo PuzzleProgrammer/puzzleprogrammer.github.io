@@ -1,6 +1,6 @@
 //(function() {
 	var ul;
-	
+	alert("hiii");
 
 	var api = 'https://offline-todo-api.herokuapp.com/todos';
 	databaseOpen().then(function() {
