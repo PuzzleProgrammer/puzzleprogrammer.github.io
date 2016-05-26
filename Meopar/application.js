@@ -30,15 +30,15 @@
 		
 //		console.log(x);
 		var todo = { text: String(label), _id: String(x) };
-	if(!test){	databaseOpen().then(databaseTodosPut(todo));
-	window.open("./thankyou.html")
-        	}
-    if(test)  databaseOpen().then(databaseTodosPut(todo)).then(window.open("./thankyou.html"));
+//	if(!test){	
+	alert(databaseOpen().then(databaseTodosPut(todo)));
+//	window.open("./thankyou.html")
+//        	}
+//    if(test)  databaseOpen().then(databaseTodosPut(todo)).then(window.open("./thankyou.html"));
    //       .then(window.open('','_self').close());
 	}
 	
   function databaseTodosPut(todo) {
-  alert("get");
     return new Promise(function(resolve, reject) {
       var transaction = db.transaction(['todo'], 'readwrite');
       var store = transaction.objectStore('todo');
