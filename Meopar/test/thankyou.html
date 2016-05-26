@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<!html manifest="./offline.appcache">
+<html>
+<head>
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="customdata.css">
+	<link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+	<script src="./indexeddb2.shim.min.js"></script>
+    <script src="./promise.js"></script>
+    <script src="./fetch.js"></script>
+    <script src="./application.js"></script>
+    <script>databaseOpen().then(alert("S1"),alert("S2")).then(alert("R1"),alert("R2"));</script>
+    <title> Background data </title>
+</head>
+<body onload="databaseOpen().then(synchronize,synchronize).then(refreshView,refreshView);">
+<div class="btn btn-info" role="button" onclick="dlete()" role="button">Delete all data?</div>
+	<ul>
+	</ul>
+</body>
+</html>

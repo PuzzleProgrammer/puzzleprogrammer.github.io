@@ -2,25 +2,26 @@ body {
 /**	background-image: url("https://images.unsplash.com/photo-1457203112846-f9f76625f7c4?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&w=1080&fit=max&s=49b14c281d9e3c799c16ce2e9eb561d1");
 	background-repeat: no-repeat;
 	background-size:cover;/**/
-	background-color:black;
+	background-color:white;
 	font-family: 'Raleway', sans-serif;
-	font-size:150px;
-	color:white;
-	text-align:center;
+	color:black;
+	padding-top:10px;
+	padding-right:10px
 }
 
 .btn {
-
+	font-weight:bold;
 	background-color: white;
 	color: black;
 /**margin:10px;/**/
-	margin-bottom:60px;
-	border-radius:40px;
-/**	border-width:5px;/**/
-	height:40px;
-	padding-top:10px;
-	padding-bottom:55px;
-	font-size:40px;
+	margin-bottom:20px;
+	border-radius:10px;
+/**/border-width:2px;/**/
+	height:30px;
+	padding-top:3px;
+	padding-right:10px;
+	font-size:15px;
+	float:right;
 }
 
 .btn-primary.raised {
@@ -29,34 +30,28 @@ body {
 
 .btn-primary.raised:active, .btn-primary.raised.active {
 	background: #33a6cc;
-	box-shadow: none;
+	box-shadow: 0 3px 0 0 #007299;
 	margin-bottom: -3px;
 	margin-top: 3px;
 }
 
 .btn:hover{
-	/**
 	background-color: #3385ff;
-	/**/
-	background-color:#dddddd;
-	color:black;
 }
 
 .container {
-	padding-top:35px;
-	max-width: 768px;
-	font-size:50px;
+	padding-top:88px;
+	max-width: 400px;
 }
 
 .stretch {
 	width: 100%;
 }
 
-h1 {
-
+ul{
+    list-style-type: none;
 }
 
-h2{
-	font-size:50px;
-	margin-bottom:60px;
+h1 {
+
 }
