@@ -12,6 +12,29 @@
 		var name=window.location.href;
 		var num=name.substr(name.length - 1);
 		alert(num);
+		var label;
+		switch(num){
+			case 1:
+				label="9 and under";
+				break;
+			case 2:
+				label="10-14";
+				break;
+			case 3:
+				label="15-19";
+				break;
+			case 4:
+				label="20-69";
+				break;
+			case 5:
+				label="70+";
+				break;
+			case 6:
+				label="abstained";
+				break;
+			default:
+				label="error";
+		}
 		var d=new Date();
 		var x=
 			Number(
