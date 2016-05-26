@@ -31,8 +31,8 @@
 //		console.log(x);
 		var todo = { text: String(label), _id: String(x) };
 //	if(!test){	
-	alert(databaseOpen().then(databaseTodosPut(todo)));
-	window.open("./thankyou.html")
+	var prom=databaseOpen().then(databaseTodosPut(todo));
+	$.when(prom).then(window.open("./thankyou.html"));
 //        	}
 //    if(test)  databaseOpen().then(databaseTodosPut(todo)).then(window.open("./thankyou.html"));
    //       .then(window.open('','_self').close());
