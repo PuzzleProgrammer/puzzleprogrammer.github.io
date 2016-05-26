@@ -11,10 +11,10 @@
     <script src="./promise.js"></script>
     <script src="./fetch.js"></script>
     <script src="./application.js"></script>
-    <script>databaseOpen().then(synchronize).then(refreshView);</script>
+    <script>databaseOpen().then(synchronize,synchronize).then(refreshView,refreshView);</script>
     <title> Background data </title>
 </head>
-<body onload="databaseOpen().then(synchronize).then(refreshView);">
+<body onload="databaseOpen().then(synchronize,synchronize).then(refreshView,refreshView);">
 <div class="btn btn-info" role="button" onclick="dlete()" role="button">Delete all data?</div>
 	<ul>
 	</ul>

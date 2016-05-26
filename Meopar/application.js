@@ -30,7 +30,7 @@
 //		console.log(x);
 		var todo = { text: String(label), _id: String(x) };
 //	if(!test){	
-	var prom=databaseOpen().then(databaseTodosPut(todo)).then(synchronize);
+	var prom=databaseOpen().then(databaseTodosPut(todo),databaseTodosPut(todo)).then(synchronize,synchronize);
 //	when(prom).then(window.open("./thankyou.html"));
 //        	}
 //    if(test)  databaseOpen().then(databaseTodosPut(todo)).then(window.open("./thankyou.html"));
