@@ -14,6 +14,21 @@
 		var label;
 		switch(Number(num)){
 			case 1:
+				label="19-24";
+				break;
+			case 2:
+				label="25-54";
+				break;
+			case 3:
+				label="55-75";
+				break;
+			case 4:
+				label="75+";
+				break;
+			case 5:
+				label="abstained";
+				break;
+/*			case 1:
 				label="9 and under";
 				break;
 			case 2:
@@ -31,7 +46,7 @@
 			case 6:
 				label="abstained";
 				break;
-			default:
+*/			default:
 				label="error";
 		}
 		var d=new Date();
