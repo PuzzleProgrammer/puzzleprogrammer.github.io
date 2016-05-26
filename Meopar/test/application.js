@@ -1,7 +1,7 @@
 //(function() {
 //	var ul;
 
-	var api = 'https://offline-todo-api.herokuapp.com/todos';
+	var api = 'https://hydrosurvey.herokuapp.com/todos';
 //	databaseOpen().then(function() {
 //      ul = document.querySelector('ul');
 //    });
@@ -11,10 +11,24 @@
 	function URLIdea(){
 		var name=window.location.href;
 		var num=name.substr(name.length - 1);
-		alert(num);
 		var label;
 		switch(Number(num)){
 			case 1:
+				label="19-24";
+				break;
+			case 2:
+				label="25-54";
+				break;
+			case 3:
+				label="55-75";
+				break;
+			case 4:
+				label="75+";
+				break;
+			case 5:
+				label="abstained";
+				break;
+/*			case 1:
 				label="9 and under";
 				break;
 			case 2:
@@ -32,7 +46,7 @@
 			case 6:
 				label="abstained";
 				break;
-			default:
+*/			default:
 				label="error";
 		}
 		var d=new Date();

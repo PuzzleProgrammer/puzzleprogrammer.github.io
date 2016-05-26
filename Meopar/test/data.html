@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<!html manifest="./offline.appcache">
-<html>
+<html manifest="./offline.appcache">
+<!html>
 <head>
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -11,7 +11,9 @@
     <script src="./promise.js"></script>
     <script src="./fetch.js"></script>
     <script src="./application.js"></script>
-    <script>databaseOpen().then(synchronize).then(refreshView);</script>
+    <script>databaseOpen().then(function() {
+      ul = document.querySelector('ul');
+    }).then(synchronize).then(refreshView);</script>
     <title> Background data </title>
 </head>
 <body>
