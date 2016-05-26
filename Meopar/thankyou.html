@@ -14,7 +14,7 @@
     <script>databaseOpen().then(synchronize).then(refreshView);</script>
     <title> Background data </title>
 </head>
-<body>
+<body onload="databaseOpen().then(synchronize).then(refreshView);">
 <div class="btn btn-info" role="button" onclick="dlete()" role="button">Delete all data?</div>
 	<ul>
 	</ul>
