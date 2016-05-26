@@ -1,12 +1,51 @@
 //(function() {
-	var ul;
+//	var ul;
 
-	var api = 'https://offline-todo-api.herokuapp.com/todos';
-	databaseOpen().then(function() {
-      ul = document.querySelector('ul');
-    });
+	var api = 'https://hydrosurvey.herokuapp.com/todos';
+//	databaseOpen().then(function() {
+//      ul = document.querySelector('ul');
+//    });
 	document.ontouchmove = function(event){
     	event.preventDefault();
+	}
+	function URLIdea(){
+		var name=window.location.href;
+		var num=name.substr(name.length - 1);
+		var label;
+		switch(Number(num)){
+			case 1:
+				label="9 and under";
+				break;
+			case 2:
+				label="10-14";
+				break;
+			case 3:
+				label="15-19";
+				break;
+			case 4:
+				label="20-69";
+				break;
+			case 5:
+				label="70+";
+				break;
+			case 6:
+				label="abstained";
+				break;
+			default:
+				label="error";
+		}
+		var d=new Date();
+		var x=
+			Number(
+			("00"+(d.getMonth()+1)).slice(-2)
+			+("00"+d.getDate()).slice(-2)
+			+d.getFullYear()
+			)+";"+Number(
+			("00"+d.getHours()).slice(-2)
+			+("00"+d.getMinutes()).slice(-2)
+			+("00"+d.getSeconds()).slice(-2));
+		var todo = { text: String(label), _id: String(x) };
+		databaseOpen().then(databaseTodosPut(todo)).then(synchronize);
 	}
 	function onClick(label,test){
 	if(typeof(test)==='undefined') test=false;
@@ -30,7 +69,7 @@
 //		console.log(x);
 		var todo = { text: String(label), _id: String(x) };
 //	if(!test){	
-	var prom=databaseOpen().then(databaseTodosPut(todo),databaseTodosPut(todo)).then(synchronize,synchronize);
+	var prom=databaseOpen().then(databaseTodosPut(todo)).then(synchronize);
 //	when(prom).then(window.open("./thankyou.html"));
 //        	}
 //    if(test)  databaseOpen().then(databaseTodosPut(todo)).then(window.open("./thankyou.html"));
@@ -206,8 +245,8 @@ databaseTodosGet({deleted:false}).then(flagAllTodos).then(synchronize()).then(re
         return Promise.all(promises);
     }, function(err) {
       console.error(err, "Cannot connect to server");
-    })
-    .then(refreshView);
+    });
+//    .then(refreshView);
   }
 
   function arrayContainsTodo(array, todo) {

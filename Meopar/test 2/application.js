@@ -11,7 +11,6 @@
 	function URLIdea(){
 		var name=window.location.href;
 		var num=name.substr(name.length - 1);
-		alert(num);
 		var label;
 		switch(Number(num)){
 			case 1:
