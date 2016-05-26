@@ -1,32 +1,15 @@
 //(function() {
-//	var ul;
+	var ul;
+	
 
 	var api = 'https://offline-todo-api.herokuapp.com/todos';
-//	databaseOpen().then(function() {
-//      ul = document.querySelector('ul');
-//    });
+	databaseOpen().then(function() {
+      ul = document.querySelector('ul');
+    }).then(synchronize);
 	document.ontouchmove = function(event){
     	event.preventDefault();
 	}
-	function URLIdea(){
-		var name=window.location.href;
-		var num=name.substr(name.length - 1);
-		alert(num);
-		var d=new Date();
-		var x=
-			Number(
-			("00"+(d.getMonth()+1)).slice(-2)
-			+("00"+d.getDate()).slice(-2)
-			+d.getFullYear()
-			)+";"+Number(
-			("00"+d.getHours()).slice(-2)
-			+("00"+d.getMinutes()).slice(-2)
-			+("00"+d.getSeconds()).slice(-2));
-		var todo = { text: String(label), _id: String(x) };
-		databaseTodosPut(todo).then(synchronize);
-	}
-	function onClick(label,test){
-	if(typeof(test)==='undefined') test=false;
+	function onClick(label){
 		var timestamp=Date();
 //		alert("Age range: \t"+label+"\nTime:        \t"+timestamp);
 //		document.location.href="hydrocolor://";// this should be the URL of the hydrocolor app
@@ -43,15 +26,10 @@
 			("00"+d.getHours()).slice(-2)
 			+("00"+d.getMinutes()).slice(-2)
 			+("00"+d.getSeconds()).slice(-2));
-		
 //		console.log(x);
 		var todo = { text: String(label), _id: String(x) };
-//	if(!test){	
-	var prom=databaseOpen().then(databaseTodosPut(todo)).then(synchronize);
-//	when(prom).then(window.open("./thankyou.html"));
-//        	}
-//    if(test)  databaseOpen().then(databaseTodosPut(todo)).then(window.open("./thankyou.html"));
-   //       .then(window.open('','_self').close());
+        databaseTodosPut(todo).then(synchronize())
+          .then(window.open('','_self').close());
 	}
 	
   function databaseTodosPut(todo) {
@@ -125,7 +103,6 @@
     todos.forEach(function(todo) {
       html += todoToHtml(todo);
     });
-//    alert("hi");
     ul.innerHTML = html;
   }
 
@@ -223,8 +200,8 @@ databaseTodosGet({deleted:false}).then(flagAllTodos).then(synchronize()).then(re
         return Promise.all(promises);
     }, function(err) {
       console.error(err, "Cannot connect to server");
-    });
-//    .then(refreshView);
+    })
+    .then(refreshView);
   }
 
   function arrayContainsTodo(array, todo) {
