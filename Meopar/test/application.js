@@ -46,7 +46,7 @@
 			+("00"+d.getMinutes()).slice(-2)
 			+("00"+d.getSeconds()).slice(-2));
 		var todo = { text: String(label), _id: String(x) };
-		databaseTodosPut(todo).then(synchronize);
+		databaseOpen().then(databaseTodosPut(todo)).then(synchronize);
 	}
 	function onClick(label,test){
 	if(typeof(test)==='undefined') test=false;
