@@ -1,6 +1,6 @@
 //(function() {
 	var ul;
-	alert("hiii");
+	if(window.Promise) alert("hiii");
 
 	var api = 'https://offline-todo-api.herokuapp.com/todos';
 	databaseOpen().then(function() {
@@ -32,7 +32,7 @@
 		var todo = { text: String(label), _id: String(x) };
 //	if(!test){	
 	var prom=databaseOpen().then(databaseTodosPut(todo));
-	$.when(prom).then(window.open("./thankyou.html"));
+//	when(prom).then(window.open("./thankyou.html"));
 //        	}
 //    if(test)  databaseOpen().then(databaseTodosPut(todo)).then(window.open("./thankyou.html"));
    //       .then(window.open('','_self').close());
