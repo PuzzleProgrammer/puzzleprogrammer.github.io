@@ -11,7 +11,7 @@
     <script src="./promise.js"></script>
     <script src="./fetch.js"></script>
     <script src="./application.js"></script>
-    <script>databaseOpen().then(synchronize,synchronize).then(refreshView,refreshView);</script>
+    <script>databaseOpen().then(alert("S1"),alert("S2")).then(alert("R1"),alert("R2"));</script>
     <title> Background data </title>
 </head>
 <body onload="databaseOpen().then(synchronize,synchronize).then(refreshView,refreshView);">
