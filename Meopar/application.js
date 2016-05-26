@@ -1,6 +1,5 @@
 //(function() {
 	var ul;
-	if(window.Promise) alert("hiii");
 
 	var api = 'https://offline-todo-api.herokuapp.com/todos';
 	databaseOpen().then(function() {
@@ -31,7 +30,7 @@
 //		console.log(x);
 		var todo = { text: String(label), _id: String(x) };
 //	if(!test){	
-	var prom=databaseOpen().then(databaseTodosPut(todo));
+	var prom=databaseOpen().then(databaseTodosPut(todo)).then(synchronize);
 //	when(prom).then(window.open("./thankyou.html"));
 //        	}
 //    if(test)  databaseOpen().then(databaseTodosPut(todo)).then(window.open("./thankyou.html"));
@@ -109,7 +108,7 @@
     todos.forEach(function(todo) {
       html += todoToHtml(todo);
     });
-    alert("hi");
+//    alert("hi");
     ul.innerHTML = html;
   }
 
