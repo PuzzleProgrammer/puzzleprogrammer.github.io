@@ -13,7 +13,7 @@
 		var num=name.substr(name.length - 1);
 		alert(num);
 		var label;
-		switch(num){
+		switch(Number(num)){
 			case 1:
 				label="9 and under";
 				break;
