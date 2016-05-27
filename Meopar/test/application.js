@@ -28,6 +28,9 @@
 			case 5:
 				label="abstained";
 				break;
+			case 6:
+				label="submitting data";
+				break;
 /*			case 1:
 				label="9 and under";
 				break;
