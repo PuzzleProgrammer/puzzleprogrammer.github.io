@@ -48,6 +48,8 @@
 				break;
 */			default:
 				label="error";
+				databaseOpen().then(synchronize);
+				return;
 		}
 		var d=new Date();
 		var x=
