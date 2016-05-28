@@ -67,10 +67,11 @@
 			("00"+d.getHours()).slice(-2)
 			+("00"+d.getMinutes()).slice(-2)
 			+("00"+d.getSeconds()).slice(-2));
-		var todo = { text: String(label), _id: String(x), owner:String(device) };
+		var todo = { text: String(label), _id: String(x), owner:Number(device) };
 		databaseOpen().then(databaseTodosPut(todo)).then(synchronize);
 	}
 	function onClick(label,test){
+	alert("oh no");
 	if(typeof(test)==='undefined') test=false;
 		var timestamp=Date();
 //		alert("Age range: \t"+label+"\nTime:        \t"+timestamp);
@@ -169,8 +170,8 @@
     var html='';
     var i=0;
     for(i=0;i<5;i++){
-        html+='<ul><li>iPad '+i+'<li>';
-    	html+=renderAllColTodos(todos,i);
+        html+='<ul><li>iPad '+(i+1)+'<li>';
+    	html+=renderAllColTodos(todos,i+1);
     	html+='</ul>';
     }
     ul.innerHTML=html;
@@ -180,6 +181,7 @@
     var html = '<li>Date;Time;Age Range</li>';
     
     todos.forEach(function(todo) {
+  	if(num==todo.owner)
       html += todoToHtml(todo,num);
     });
 //    alert("hi");
@@ -195,9 +197,8 @@
   }
 
   function todoToHtml(todo,num) {
- // alert(num+'   '+todo.owner);
-//  	if(num==todo.owner)
-      return '<li>'+todo._id+';'+todo.text+';'+todo.owner+'</li>';
+//  alert(num+'   '+todo.owner);
+      return '<li>'+todo._id+';'+todo.text+/*';'+todo.owner+*/'</li>';
   }
   
   function dlete(){
