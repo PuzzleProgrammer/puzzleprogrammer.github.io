@@ -25,6 +25,23 @@ body {
 	border:none;
 }
 
+.btn2 {
+  font-size:default;
+	font-weight:bold;
+	background-color: white;
+	color: black;
+/**margin:10px;/**/
+	margin-bottom:20px;
+	padding-left:10px;
+	border-radius:10px;
+/**/border-width:2px;/**/
+	height:30px;
+	padding-top:3px;
+	padding-right:10px;
+	font-size:15px;
+	float:right;
+}
+
 .btn-primary.raised {
 	box-shadow:none;
 }

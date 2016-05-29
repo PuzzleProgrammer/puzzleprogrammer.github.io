@@ -24,6 +24,10 @@ body {
 	float:right;
 }
 
+ul>ul{float:left;
+width:20%;
+    }
+
 .btn-primary.raised {
 	box-shadow: 0 3px 0 0 #007299;
 }

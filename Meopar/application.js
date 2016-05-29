@@ -5,12 +5,15 @@
 //	databaseOpen().then(function() {
 //      ul = document.querySelector('ul');
 //    });
-	document.ontouchmove = function(event){
-    	event.preventDefault();
-	}
+//	document.ontouchmove = function(event){
+//    	event.preventDefault();
+//	}
 	function URLIdea(){
-		var name=window.location.href;
-		var num=name.substr(name.length - 1);
+//		var name=window.location.href;
+//		var num=name.substr(name.length - 1);
+		var name=window.location.hash.slice(1);
+		var num=name.slice(0,1);
+		var device=name.slice(1);
 		var label;
 		switch(Number(num)){
 			case 1:
@@ -64,36 +67,12 @@
 			("00"+d.getHours()).slice(-2)
 			+("00"+d.getMinutes()).slice(-2)
 			+("00"+d.getSeconds()).slice(-2));
-		var todo = { text: String(label), _id: String(x) };
-		databaseOpen().then(databaseTodosPut(todo)).then(synchronize);
-	}
-	function onClick(label,test){
-	if(typeof(test)==='undefined') test=false;
-		var timestamp=Date();
-//		alert("Age range: \t"+label+"\nTime:        \t"+timestamp);
-//		document.location.href="hydrocolor://";// this should be the URL of the hydrocolor app
-		//if there is no URL, the following will close the page
-		//window.open('','_self').close()
-		var d=new Date();
-//		console.log(d);
-		var x=
-			Number(
-			("00"+(d.getMonth()+1)).slice(-2)
-			+("00"+d.getDate()).slice(-2)
-			+d.getFullYear()
-			)+";"+Number(
-			("00"+d.getHours()).slice(-2)
-			+("00"+d.getMinutes()).slice(-2)
-			+("00"+d.getSeconds()).slice(-2));
-		
-//		console.log(x);
-		var todo = { text: String(label), _id: String(x) };
-//	if(!test){	
-	var prom=databaseOpen().then(databaseTodosPut(todo)).then(synchronize);
-//	when(prom).then(window.open("./thankyou.html"));
-//        	}
-//    if(test)  databaseOpen().then(databaseTodosPut(todo)).then(window.open("./thankyou.html"));
-   //       .then(window.open('','_self').close());
+		var todo = { text: String(label), _id: String(x), owner:Number(device) };
+		//if submitting, don't add but sync
+		if(label=="submitting data"){ databaseOpen().then(synchronize);
+		}
+		//otherwise add but don't sync
+		else databaseOpen().then(databaseTodosPut(todo));
 	}
 	
   function databaseTodosPut(todo) {
@@ -162,13 +141,25 @@
     return databaseTodosGet({deleted:false}).then(renderAllTodos);
   }
   
-  function renderAllTodos(todos) {
-    var html = '<li>Date;Time;Age Range</li>';
+  function renderAllTodos(todos){
+    var html='';
+    var i=0;
+    for(i=0;i<5;i++){
+        html+='<ul><li>FOCOS Tablet '+(i+1)+'<li>= = = = = = = = = = = =</li><li>';
+    	html+=renderAllColTodos(todos,i+1);
+    	html+='</ul>';
+    }
+    ul.innerHTML=html;
+  }
+  
+  function renderAllColTodos(todos,num) {
+    var html = 'Date;Time;Age Range</li><li>= = = = = = = = = = = = = =</li><li>';
+    
     todos.forEach(function(todo) {
-      html += todoToHtml(todo);
+  	if(num==todo.owner)
+      html += todoToHtml(todo,num);
     });
-//    alert("hi");
-    ul.innerHTML = html;
+	return html;
   }
 
   function flagAllTodos(todos) {
@@ -178,8 +169,8 @@
     });
   }
 
-  function todoToHtml(todo) {
-    return '<li>'+todo._id+';'+todo.text+'</li>';
+  function todoToHtml(todo,num) {
+      return '<li>'+todo._id+';'+todo.text+'</li>';
   }
   
   function dlete(){
