@@ -1,5 +1,5 @@
 CACHE MANIFEST
-# V3.0
+# V3.1
 ./indexeddb2.shim.min.js
 ./promise.js
 ./application.js
@@ -12,6 +12,8 @@ CACHE MANIFEST
 ./fetch.js
 ./quest76.png
 ./quest152.png
+./hydro.png
+./red-down.png
 
 
 NETWORK:
