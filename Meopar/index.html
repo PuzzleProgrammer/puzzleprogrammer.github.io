@@ -7,25 +7,24 @@
 	<meta name = "viewport" content = "initial-scale = 1, user-scalable = no">
 	<link rel="apple-touch-icon" sizes="76x76" href="quest76.png" />
     <link rel="apple-touch-icon" sizes="152x152" href="quest152.png" />
-	<title> Hydrocolor Survey </title>
-
 	<!--Stylesheets and bootstrap-->
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="custom.css">
-	
 	<!--fonts-->
 	<link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
 	<link href='https://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
 	<!--js launcher-->
-	<script>function handleError(evt) {
-    if (evt.message) { // Chrome sometimes provides this
-      alert("error: "+evt.message +"  at linenumber: "+evt.lineno+" of file: "+evt.filename);
-    } else {
-      alert("error: "+evt.type+" from element: "+(evt.srcElement || evt.target));
+	<script>
+	function handleError(evt) {
+        if (evt.message) { // Chrome sometimes provides this
+            alert("error: "+evt.message +"  at linenumber: "+evt.lineno+" of file: "+evt.filename);
+        } else {
+            alert("error: "+evt.type+" from element: "+(evt.srcElement || evt.target));
+        }
     }
-}
 
-window.addEventListener("error", handleError, true);</script>
+    window.addEventListener("error", handleError, true);
+    </script>
 <!--    <script src="./indexeddb2.shim.min.js"></script>
     <script src="./promise.js"></script>
     <script src="./fetch.js"></script>
@@ -56,9 +55,14 @@ window.addEventListener("error", handleError, true);</script>
 			}
 		})(document,window.navigator,'standalone');
 	</script>
-	<script>document.ontouchmove = function(event){
+	<script>
+	document.ontouchmove = function(event){
     	event.preventDefault();
-	}</script>
+	}
+	</script>
+    
+	<title> Age range </title>
+
 </head>
 <body>
 	<div class = "container">
