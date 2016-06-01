@@ -5,27 +5,26 @@
 <!>	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="apple-mobile-web-app-status-bar-style" content="black">
 	<meta name = "viewport" content = "initial-scale = 1, user-scalable = no">
-	<link rel="apple-touch-icon" sizes="76x76" href="hydro76.png" />
-    <link rel="apple-touch-icon" sizes="152x152" href="hydro152.png" />
-	<title> Hydrocolor Survey </title>
-
+	<link rel="apple-touch-icon" sizes="76x76" href="quest76.png" />
+    <link rel="apple-touch-icon" sizes="152x152" href="quest152.png" />
 	<!--Stylesheets and bootstrap-->
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="custom.css">
-	
 	<!--fonts-->
 	<link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
 	<link href='https://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
 	<!--js launcher-->
-	<script>function handleError(evt) {
-    if (evt.message) { // Chrome sometimes provides this
-      alert("error: "+evt.message +"  at linenumber: "+evt.lineno+" of file: "+evt.filename);
-    } else {
-      alert("error: "+evt.type+" from element: "+(evt.srcElement || evt.target));
+	<script>
+	function handleError(evt) {
+        if (evt.message) { // Chrome sometimes provides this
+            alert("error: "+evt.message +"  at linenumber: "+evt.lineno+" of file: "+evt.filename);
+        } else {
+            alert("error: "+evt.type+" from element: "+(evt.srcElement || evt.target));
+        }
     }
-}
 
-window.addEventListener("error", handleError, true);</script>
+    window.addEventListener("error", handleError, true);
+    </script>
 <!--    <script src="./indexeddb2.shim.min.js"></script>
     <script src="./promise.js"></script>
     <script src="./fetch.js"></script>
@@ -56,30 +55,30 @@ window.addEventListener("error", handleError, true);</script>
 			}
 		})(document,window.navigator,'standalone');
 	</script>
+	<script>
+	document.ontouchmove = function(event){
+    	event.preventDefault();
+	}
+	</script>
+    
+	<title> Age range </title>
+
 </head>
 <body>
 	<div class = "container">
 		<h2 style="margin-top:50px" class= "text-center">What is your age range?</h2><br>
-		<div class="stretch btn btn-info" id="19-24" role="button" onclick='window.open("./thankyou.html#1");' role="button">19 to 24</div>
-		<div class="stretch btn btn-info" id="25-54" role="button" onclick='window.open("./thankyou.html#2");' role="button">25 to 54</div>
-		<div class="stretch btn btn-info" id="55-75" role="button" onclick='window.open("./thankyou.html#3");' role="button">55 to 75</div>
-		<div class="stretch btn btn-info" id="76+" role="button" onclick='window.open("./thankyou.html#4");' role="button">76 and up</div>
-		<div class="stretch btn btn-info" id="anonymous" role="button" onclick='window.open("./thankyou.html#5");' role="button">Prefer not to say</div>
-		<!--
-		<div class="stretch btn btn-info" id="9 under" role="button" onclick='window.open("./thankyou.html#1");' role="button">9 or younger</div>
-		
-		<div class="stretch btn btn-info" id="10-14" role="button" onclick='window.open("./thankyou.html#2");' role="button">10 to 14</div>
-		
-		<div class="stretch btn btn-info" id="15-20" role="button" onclick='window.open("./thankyou.html#3");' role="button">15 to 20</div>
-		
-		<div class="stretch btn btn-info" id="20-69" role="button" onclick='window.open("./thankyou.html#4");' role="button">20 to 69</div>
-		
-		<div class="stretch btn btn-info" id="70+" role="button" onclick='window.open("./thankyou.html#5");' role="button">70 or older</div>
-		
-		<a href="./thankyou.html#6" class="stretch btn btn-info" id="Prefer not to say" role="button">Preferred not to say</a>
-		-->
-<!--		<a href="hydrocolor://" class="stretch btn btn-info" id="other" role="button" role="button">View Data</a>
--->
+
+		<div class="stretch btn btn-info" id="19-24" role="button" onclick='window.open("./thankyou.html#1"+window.location.hash.slice(1));' role="button">19 to 24</div>
+
+		<div class="stretch btn btn-info" id="25-54" role="button" onclick='window.open("./thankyou.html#2"+window.location.hash.slice(1));' role="button">25 to 54</div>
+
+		<div class="stretch btn btn-info" id="55-75" role="button" onclick='window.open("./thankyou.html#3"+window.location.hash.slice(1));' role="button">55 to 75</div>
+
+		<div class="stretch btn btn-info" id="76+" role="button" onclick='window.open("./thankyou.html#4"+window.location.hash.slice(1));' role="button">76 and up</div>
+
+		<div class="stretch btn btn-info" id="anonymous" role="button" onclick='window.open("./thankyou.html#5"+window.location.hash.slice(1));' role="button">Prefer not to say</div>
+
+		<div class="btn2 btn-info" role="button" onclick='window.open("./thankyou.html#0");'>Data</div>
 	</div>
 </body>
 </html>
