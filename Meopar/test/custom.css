@@ -10,12 +10,29 @@ body {
 	text-align:center;
 }
 
-.btn {
+.title{
+	margin-top:50px;
+}
 
+.buttons6 .title{
+	padding-bottom:0px;
+}
+
+.buttons5 .title{
+	padding-bottom:50px;
+}
+
+.buttons5 .btn{
+	margin-bottom:60px;
+}
+
+.buttons6 .btn{
+	margin-bottom:50px;
+}
+
+.btn {
 	background-color: white;
 	color: black;
-	/*margin:10px;*/
-	margin-bottom:60px;
 	border-radius:10px;
 /**	border-width:5px;/**/
 	height:40px;
