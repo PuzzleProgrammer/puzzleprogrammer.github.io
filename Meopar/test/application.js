@@ -58,7 +58,7 @@
 				return;
 		}
 		var d=new Date();
-	/*	var x=
+		var x=
 			Number(
 			("00"+(d.getMonth()+1)).slice(-2)
 			+("00"+d.getDate()).slice(-2)
@@ -66,8 +66,7 @@
 			)+";"+Number(
 			("00"+d.getHours()).slice(-2)
 			+("00"+d.getMinutes()).slice(-2)
-			+("00"+d.getSeconds()).slice(-2));*/
-			var x= 123;
+			+("00"+d.getSeconds()).slice(-2));
 		var todo = { text: String(label), _id: String(x), owner:Number(device) };
 		//if submitting, don't add but sync
 		if(label=="submitting data"){ databaseOpen().then(synchronize);
@@ -250,7 +249,10 @@ databaseTodosGet({deleted:false}).then(flagAllTodos).then(synchronize()).then(re
 		  /// NEW CONDITION - IF DELETED BUT IN SERVER, SET SERVER TO DELETED
 		  if (arrayContainsTodo(remoteTodos, todo) && getArrayTodo(remoteTodos,todo).deleted!=true && todo.deleted) {
 			/// POST MODIFIED TODO TO SERVER WITH DELETED TAG
-			
+            return serverTodosPost(todo)
+              .catch(function(err) {
+                if (err.message === "Gone") return deleteTodo(todo);
+              });
 		  }
         }));
 
