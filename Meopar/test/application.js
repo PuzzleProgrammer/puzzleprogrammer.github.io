@@ -58,7 +58,7 @@
 				return;
 		}
 		var d=new Date();
-		var x=
+	/*	var x=
 			Number(
 			("00"+(d.getMonth()+1)).slice(-2)
 			+("00"+d.getDate()).slice(-2)
@@ -66,7 +66,8 @@
 			)+";"+Number(
 			("00"+d.getHours()).slice(-2)
 			+("00"+d.getMinutes()).slice(-2)
-			+("00"+d.getSeconds()).slice(-2));
+			+("00"+d.getSeconds()).slice(-2));*/
+			var x= 123;
 		var todo = { text: String(label), _id: String(x), owner:Number(device) };
 		//if submitting, don't add but sync
 		if(label=="submitting data"){ databaseOpen().then(synchronize);
@@ -230,6 +231,7 @@ databaseTodosGet({deleted:false}).then(flagAllTodos).then(synchronize()).then(re
           };
 
           // Has it been marked for deletion?
+		  /// NEW CONDITION - MUST BE 2 WEEKS OLD TO DELETE
           if (todo.deleted) {
             return serverTodosDelete(todo).then(deleteTodo, function(res) {
               if (err.message === "Gone") return deleteTodo();
@@ -244,12 +246,19 @@ databaseTodosGet({deleted:false}).then(flagAllTodos).then(synchronize()).then(re
                 if (err.message === "Gone") return deleteTodo(todo);
               });
           }
+		  
+		  /// NEW CONDITION - IF DELETED BUT IN SERVER, SET SERVER TO DELETED
+		  if (arrayContainsTodo(remoteTodos, todo) && getArrayTodo(remoteTodos,todo).deleted!=true && todo.deleted) {
+			/// POST MODIFIED TODO TO SERVER WITH DELETED TAG
+			
+		  }
         }));
 
         // Go through the todos that came down from the server,
         // we don't already have one, add it to the local db
+		/// NEW CONDITION - MUST NOT BE SET AS DELETED IN SERVER - DONE
         promises = promises.concat(remoteTodos.map(function(todo) {
-          if (!arrayContainsTodo(localTodos, todo)) {
+          if (!arrayContainsTodo(localTodos, todo) && !todo.deleted) {
             return databaseTodosPut(todo);
           }
         }));
