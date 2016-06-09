@@ -41,7 +41,7 @@ If you need something other than 5 or 6 buttons, you need to go into the custom.
 
 To save the web-app to the iPad:
 
-Go to "http://puzzleprogrammer.github.com/Meopar/index.html#NUM", where NUM is a unique 1-digit number for the iPad (for the current iPads, this is their FOCOS number, make sure the numbers go in incremental order starting at 1 - no skipping a number!).
+Go to "http://puzzleprogrammer.github.io/Meopar/index.html#NUM", where NUM is a unique 1-digit number for the iPad (for the current iPads, this is their FOCOS number, make sure the numbers go in incremental order starting at 1 - no skipping a number!).
 
 On that page, tap the icon that looks like a square with an arrow pointing up on safari, and choose the "Add to Home Screen" option.
 You get the option to rename the app, then it is saved to the home screen as an app.

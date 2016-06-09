@@ -265,6 +265,14 @@ databaseTodosGet({deleted:false}).then(flagAllTodos).then(synchronize()).then(re
 //    .then(refreshView);
   }
 
+  function getArrayTodo(array, todo) {
+    for (var i = 0; i < array.length; i++) {
+       if(array[i]._id === todo._id) {
+         return array[i];
+       }
+    };
+    return todo;
+  }
   function arrayContainsTodo(array, todo) {
     for (var i = 0; i < array.length; i++) {
        if(array[i]._id === todo._id) {
