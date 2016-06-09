@@ -1,21 +1,18 @@
-//(function() {
-//	var ul;
 
 	var api = 'https://hydrosurvey.herokuapp.com/todos';
-//	databaseOpen().then(function() {
-//      ul = document.querySelector('ul');
-//    });
-//	document.ontouchmove = function(event){
-//    	event.preventDefault();
-//	}
+
+  var number_of_iPads=5;
+
+
 	function URLIdea(){
-//		var name=window.location.href;
-//		var num=name.substr(name.length - 1);
 		var name=window.location.hash.slice(1);
 		var num=name.slice(0,1);
 		var device=name.slice(1);
 		var label;
 		switch(Number(num)){
+      case 0:
+        label="submitting data";
+        break;
 			case 1:
 				label="19-24";
 				break;
@@ -30,9 +27,6 @@
 				break;
 			case 5:
 				label="abstained";
-				break;
-			case 6:
-				label="submitting data";
 				break;
 /*			case 1:
 				label="9 and under";
@@ -144,8 +138,8 @@
   function renderAllTodos(todos){
     var html='';
     var i=0;
-    for(i=0;i<5;i++){
-        html+='<ul><li>FOCOS Tablet '+(i+1)+'<li>= = = = = = = = = = = =</li><li>';
+    for(i=0;i<number_of_iPads;i++){
+      html+='<ul><li>FOCOS Tablet '+(i+1)+'<li>= = = = = = = = = = = =</li><li>';
     	html+=renderAllColTodos(todos,i+1);
     	html+='</ul>';
     }
@@ -230,6 +224,7 @@ databaseTodosGet({deleted:false}).then(flagAllTodos).then(synchronize()).then(re
           };
 
           // Has it been marked for deletion?
+		  /// NEW CONDITION - MUST BE 2 WEEKS OLD TO DELETE
           if (todo.deleted) {
             return serverTodosDelete(todo).then(deleteTodo, function(res) {
               if (err.message === "Gone") return deleteTodo();
@@ -244,12 +239,22 @@ databaseTodosGet({deleted:false}).then(flagAllTodos).then(synchronize()).then(re
                 if (err.message === "Gone") return deleteTodo(todo);
               });
           }
+		  
+		  /// NEW CONDITION - IF DELETED BUT IN SERVER, SET SERVER TO DELETED
+		  if (arrayContainsTodo(remoteTodos, todo) && getArrayTodo(remoteTodos,todo).deleted!=true && todo.deleted) {
+			/// POST MODIFIED TODO TO SERVER WITH DELETED TAG
+            return serverTodosPost(todo)
+              .catch(function(err) {
+                if (err.message === "Gone") return deleteTodo(todo);
+              });
+		  }
         }));
 
         // Go through the todos that came down from the server,
         // we don't already have one, add it to the local db
+		/// NEW CONDITION - MUST NOT BE SET AS DELETED IN SERVER - DONE
         promises = promises.concat(remoteTodos.map(function(todo) {
-          if (!arrayContainsTodo(localTodos, todo)) {
+          if (!arrayContainsTodo(localTodos, todo) && !todo.deleted) {
             return databaseTodosPut(todo);
           }
         }));
@@ -260,6 +265,14 @@ databaseTodosGet({deleted:false}).then(flagAllTodos).then(synchronize()).then(re
 //    .then(refreshView);
   }
 
+  function getArrayTodo(array, todo) {
+    for (var i = 0; i < array.length; i++) {
+       if(array[i]._id === todo._id) {
+         return array[i];
+       }
+    };
+    return todo;
+  }
   function arrayContainsTodo(array, todo) {
     for (var i = 0; i < array.length; i++) {
        if(array[i]._id === todo._id) {

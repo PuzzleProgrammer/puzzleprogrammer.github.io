@@ -5,6 +5,7 @@
 <!>	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="apple-mobile-web-app-status-bar-style" content="black">
 	<meta name = "viewport" content = "initial-scale = 1, user-scalable = no">
+	<meta charset="UTF-8">
 	<link rel="apple-touch-icon" sizes="76x76" href="quest76.png" />
     <link rel="apple-touch-icon" sizes="152x152" href="quest152.png" />
 	<!--Stylesheets and bootstrap-->
@@ -65,8 +66,8 @@
 
 </head>
 <body>
-	<div class = "container">
-		<h2 style="margin-top:50px" class= "text-center">What is your age range?</h2><br>
+	<div class = "container buttons5">
+		<h2 class= "title text-center">What is your age range?</h2>
 
 		<div class="stretch btn btn-info" id="19-24" role="button" onclick='window.open("./thankyou.html#1"+window.location.hash.slice(1));' role="button">19 to 24</div>
 
@@ -78,7 +79,7 @@
 
 		<div class="stretch btn btn-info" id="anonymous" role="button" onclick='window.open("./thankyou.html#5"+window.location.hash.slice(1));' role="button">Prefer not to say</div>
 
-<div class="btn2 btn-info" role="button" onclick='window.open("./thankyou.html#6");'>Data</div>
+		<div class="btn2 btn-info" role="button" onclick='window.open("./thankyou.html#0");'>Data</div>
 	</div>
 </body>
 </html>

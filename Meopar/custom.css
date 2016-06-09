@@ -1,23 +1,21 @@
+/* START OF GENERAL STYLES */
+
 body {
-/**	background-image: url("https://images.unsplash.com/photo-1457203112846-f9f76625f7c4?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&w=1080&fit=max&s=49b14c281d9e3c799c16ce2e9eb561d1");
-	background-repeat: no-repeat;
-	background-size:cover;/**/
 	background-color:black;
 	font-family: 'lato', sans-serif;
 	font-size:150px;
 	color:white;
-
 	text-align:center;
 }
 
-.btn {
+.title{
+	margin-top:50px;
+}
 
+.btn {
 	background-color: white;
 	color: black;
-/**margin:10px;/**/
-	margin-bottom:60px;
 	border-radius:10px;
-/**	border-width:5px;/**/
 	height:40px;
 	padding-top:10px;
 	padding-bottom:65px;
@@ -30,11 +28,11 @@ body {
 	font-weight:bold;
 	background-color: grey;
 	color: black;
-/**margin:10px;/**/
+	margin:10px;
 	margin-bottom:20px;
 	padding-left:10px;
 	border-radius:10px;
-/**/border-width:2px;/**/
+	border-width:2px;
 	height:30px;
 	padding-top:3px;
 	padding-right:10px;
@@ -54,9 +52,6 @@ body {
 }
 
 .btn:hover{
-	/**
-	background-color: #3385ff;
-	/**/
 	background-color:#888;
 	color:black;
 }
@@ -71,12 +66,30 @@ body {
 	width: 100%;
 }
 
-h1 {
-
-}
+h1 {}
 
 h2{
 	font-family: 'lato', sans-serif;
 	font-size:50px;
+	margin-bottom:60px;
+}
+
+/* END OF GENERAL STYLES*/
+
+/* 6 buttons */
+.buttons6 .title{
+	padding-bottom:0px;
+}
+
+.buttons6 .btn{
+	margin-bottom:50px;
+}
+
+/* 5 buttons */
+.buttons5 .title{
+	padding-bottom:50px;
+}
+
+.buttons5 .btn{
 	margin-bottom:60px;
 }

@@ -1,11 +1,11 @@
 CACHE MANIFEST
-# V3.1
+# V4.0
 ./indexeddb2.shim.min.js
 ./promise.js
 ./application.js
 ./css/bootstrap.min.css
-#	./index.html
-#	./data.html
+	./index.html
+	./data.html
 	./thankyou.html
 ./custom.css
 ./customdata.css
