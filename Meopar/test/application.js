@@ -1,16 +1,10 @@
-//(function() {
-//	var ul;
 
 	var api = 'https://hydrosurvey.herokuapp.com/todos';
-//	databaseOpen().then(function() {
-//      ul = document.querySelector('ul');
-//    });
-//	document.ontouchmove = function(event){
-//    	event.preventDefault();
-//	}
+
+  var number_of_iPads=5;
+
+
 	function URLIdea(){
-//		var name=window.location.href;
-//		var num=name.substr(name.length - 1);
 		var name=window.location.hash.slice(1);
 		var num=name.slice(0,1);
 		var device=name.slice(1);
@@ -144,8 +138,8 @@
   function renderAllTodos(todos){
     var html='';
     var i=0;
-    for(i=0;i<5;i++){
-        html+='<ul><li>FOCOS Tablet '+(i+1)+'<li>= = = = = = = = = = = =</li><li>';
+    for(i=0;i<number_of_iPads;i++){
+      html+='<ul><li>FOCOS Tablet '+(i+1)+'<li>= = = = = = = = = = = =</li><li>';
     	html+=renderAllColTodos(todos,i+1);
     	html+='</ul>';
     }
