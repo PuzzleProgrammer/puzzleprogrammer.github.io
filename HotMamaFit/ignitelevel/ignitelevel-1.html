@@ -166,7 +166,7 @@ input[type=button] {
 	}
 	​
 	.row-fluid {
-		columns: 50px 2 !important;
+		columns: 50% !important;
 	}
 	#pink {
 		color: #e90e8d;
@@ -174,8 +174,14 @@ input[type=button] {
 		text-align: center;
 		line-height: 100%;
 	}
-	​
-	​
+	​.left{
+		float: left;
+		width:50%;
+	}
+	.right{
+		float:right;
+		width:50%;
+	}
 	p {
 		font-size: 3.4vw !important;
 		color: #fff;
@@ -230,31 +236,27 @@ input[type=button] {
         </div>
         <h2 id = "pink">Select your current<br> fitness level:</h2>
 
-		<div class = "row-fluid">
-	        <button class = "level-button-1" onclick="location.href='../fuel/fuel.html'">
+	        <button class = "level-button-1 left" onclick="location.href='../fuel/fuel.html'">
 	            <div class="group">
 	                <a href="../fuel/fuel.html"><img src="../images/fuel.svg"/>
 	                </a>
 	                <h3>FUEL: Beginner</h3>
 	            </div>
 	        </button>
-
-	        <button class = "level-button-2" onclick="location.href='../flash/flash.html'">
+	        <button class = "level-button-2 right" onclick="location.href='../flash/flash.html'">
 	            <div class="group">
 	                <a href="../flash/flash.html" ><img src="../images/flash.svg"/>
 	                </a>
 	                <h3>FLASH: Intermediate</h3>
 	            </div>
 	        </button>
-
-	        <button class = "level-button-3" onclick="location.href='../burn/burn.html'">
+	        <button class = "level-button-3 left" onclick="location.href='../burn/burn.html'">
 	            <div class="group">
 	                <a href="../burn/burn.html"><img src="../images/burn.svg" /></a>
 	                <h3>BURN: Advanced</h3>
 	            </div>
 	        </button>
-
-	        <button class = "level-button-4" onclick="location.href='../torch/torch.html'">
+	        <button class = "level-button-4 right" onclick="location.href='../torch/torch.html'">
 	            <div class="group">
 	                <a href="../torch/torch.html"><img src="../images/torch.svg"/></a>
 	                <h3>TORCH: I'm practically<br> a Superhero</h3>
