@@ -1356,7 +1356,8 @@ elementOffset = 0.0,
 windowSize     = 0.0,
 statsDist = 0.0,
 teamDist = 0.0,
-distance      = 0.0;
+distance      = 0.0,
+landscape = false;
 
 
 $(window).ready(function(){
@@ -1374,7 +1375,13 @@ $(window).ready(function(){
 
 });
 $(window).resize(function () {// Prevents the page from resizing when address bar appears/disappears
-    windowSize     = window.innerHeight;
+	if(landscape && window.innerHeight > window.innerWidth){
+		landscape=false;
+    	windowSize = window.innerHeight;
+	}else if(!landscape && window.innerHeight < window.innerWidth){
+		landscape=true;
+    	windowSize = window.innerHeight;
+	}
 });
 //hero fade when scroll
 $(window).scroll(function(){
