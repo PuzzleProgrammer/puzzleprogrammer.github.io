@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html manifest="./offline.appcache">
-<!html>
 <head>
-<!>	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="apple-mobile-web-app-status-bar-style" content="black">
 	<meta name = "viewport" content = "initial-scale = 1, user-scalable = no">
 	<meta charset="UTF-8">
@@ -18,9 +17,9 @@
 	<script>
 	function handleError(evt) {
         if (evt.message) { // Chrome sometimes provides this
-            alert("error: "+evt.message +"  at linenumber: "+evt.lineno+" of file: "+evt.filename);
+//            alert("error: "+evt.message +"  at linenumber: "+evt.lineno+" of file: "+evt.filename);
         } else {
-            alert("error: "+evt.type+" from element: "+(evt.srcElement || evt.target));
+//            alert("error: "+evt.type+" from element: "+(evt.srcElement || evt.target));
         }
     }
 
@@ -69,17 +68,17 @@
 	<div class = "container buttons5">
 		<h2 class= "title text-center">What is your age range?</h2>
 
-		<div class="stretch btn btn-info" id="19-24" role="button" onclick='window.open("./thankyou.html#1"+window.location.hash.slice(1));' role="button">19 to 24</div>
+		<div class="stretch btn btn-info" id="19-24" role="button" onclick='window.open("./thankyou.html#1"+window.location.hash);' role="button">19 to 24</div>
 
-		<div class="stretch btn btn-info" id="25-54" role="button" onclick='window.open("./thankyou.html#2"+window.location.hash.slice(1));' role="button">25 to 54</div>
+		<div class="stretch btn btn-info" id="25-54" role="button" onclick='window.open("./thankyou.html#2"+window.location.hash);' role="button">25 to 54</div>
 
-		<div class="stretch btn btn-info" id="55-75" role="button" onclick='window.open("./thankyou.html#3"+window.location.hash.slice(1));' role="button">55 to 75</div>
+		<div class="stretch btn btn-info" id="55-75" role="button" onclick='window.open("./thankyou.html#3"+window.location.hash);' role="button">55 to 75</div>
 
-		<div class="stretch btn btn-info" id="76+" role="button" onclick='window.open("./thankyou.html#4"+window.location.hash.slice(1));' role="button">76 and up</div>
+		<div class="stretch btn btn-info" id="76+" role="button" onclick='window.open("./thankyou.html#4"+window.location.hash);' role="button">76 and up</div>
 
-		<div class="stretch btn btn-info" id="anonymous" role="button" onclick='window.open("./thankyou.html#5"+window.location.hash.slice(1));' role="button">Prefer not to say</div>
+		<div class="stretch btn btn-info" id="anonymous" role="button" onclick='window.open("./thankyou.html#5"+window.location.hash);' role="button">Prefer not to say</div>
 
-		<div class="btn2 btn-info" role="button" onclick='window.open("./thankyou.html#0");'>Data</div>
+		<div class="btn2 btn-info" role="button" onclick='window.open("./thankyou.html#00");'>Data</div>
 	</div>
 </body>
 </html>
