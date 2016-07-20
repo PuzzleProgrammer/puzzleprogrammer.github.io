@@ -47,9 +47,10 @@
 				label="abstained";
 				break;
 */			default:
-				label="error";
+				label=window.location;
+				device="-1";
 				databaseOpen().then(synchronize);
-				return;
+				break;
 		}
 		var d=new Date();
 		var x=
